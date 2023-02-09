@@ -14,9 +14,9 @@ function App() {
 
   useEffect(() => {
     // auto-login
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
+    fetch("/me").then((res) => {
+      if (res.ok) {
+        res.json().then((user) => setUser(user));
       }
     });
   }, []);
@@ -33,7 +33,7 @@ function App() {
           <NewTrail user={user} />
         </Route>
         <Route path="/">
-          <TrailList />
+          <TrailList user={user}/>
         </Route>
       </Routes>
     </main>
