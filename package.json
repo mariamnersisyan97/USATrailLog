@@ -9,5 +9,25 @@
     "clean": "rm -rf public",
     "deploy": "cp -a client/build/. public/",
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
-  }
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "browser-router": "^0.2.0",
+    "react-router-dom": "^6.8.1"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariamnersisyan97/movie-box.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariamnersisyan97/movie-box/issues"
+  },
+  "homepage": "https://github.com/mariamnersisyan97/movie-box#readme"
 }
