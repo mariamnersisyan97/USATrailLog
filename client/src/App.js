@@ -1,11 +1,10 @@
-// import './App.css';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
-import Login from './navigation/Login';
 import { useState, useEffect } from 'react';
 import NavBar from 'react-bootstrap/Navbar';
 import NewTrail from './navigation/NewTrail';
 import TrailList from './navigation/TrailList';
+import Login from './navigation/Login';
 
 
 

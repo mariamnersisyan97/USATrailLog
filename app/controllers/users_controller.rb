@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+    def index 
+        render json: User.all
+    end
    def create
     user = User.create!(user_params)
     session[:user_id] = user.id
@@ -14,4 +17,5 @@ class UsersController < ApplicationController
 
    def user_params
     params.permit(:username, :password_confirmation)
+   end
 end
