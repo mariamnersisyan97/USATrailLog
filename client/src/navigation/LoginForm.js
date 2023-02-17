@@ -9,10 +9,11 @@ function LoginForm({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState([])
+  const [errors, setErrors] = useState([])
 
   function handleSubmit(e){
     e.preventDefault();
+    setIsLoading(true);
     fetch("/login", {
       method: "POST",
       headers: {
@@ -24,7 +25,7 @@ function LoginForm({ onLogin }) {
       if (res.ok) {
         res.json().then((user) => onLogin(user));
       } else {
-        res.json().then((error => setError(error.Errors)))
+        res.json().then((err => setErrors(err.errors)))
       }
     })
   }
@@ -36,14 +37,16 @@ function LoginForm({ onLogin }) {
       <form onSubmit={handleSubmit}>
 
     <Form.Group value={username}
-        onChange={(e) => setUsername(e.target.value)} className="mb-3" controlId="exampleForm.ControlInput1"> 
+        onChange={(e) => setUsername(e.target.value)}  > 
         <Form.Label>Username</Form.Label>
-        <Form.Control type="email" placeholder="Username" />
+        <Form.Control type="username" placeholder="Username" />
       </Form.Group>
+        {/* <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"/> */}
+
       <Form.Group value={password}
-        onChange={(e) => setPassword(e.target.value)}className="mb-3" controlId="exampleForm.ControlInput1"> 
+        onChange={(e) => setPassword(e.target.value)}> 
         <Form.Label>Password</Form.Label>
-        <Form.Control type="email" placeholder="Password" />
+        <Form.Control type="password" placeholder="Password" />
       </Form.Group>
       <Form>
       <Button variant="info">
@@ -51,7 +54,7 @@ function LoginForm({ onLogin }) {
         </Button>
     </Form>
     <Form>
-      {error.map((err) => (
+      {errors.map((err) => (
         <error key={err}>{err}</error>
       ))}
     </Form>

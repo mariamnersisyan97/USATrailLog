@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
 
 
 function SignUp({ onLogin }) {
@@ -40,20 +42,22 @@ function SignUp({ onLogin }) {
   return (
     <form onSubmit={handleSubmit}>
        <Form.Group value={username}
-        onChange={(e) => setUsername(e.target.value)} className="mb-3" controlId="exampleForm.ControlInput1"> 
+        onChange={(e) => setUsername(e.target.value)}
+        className="mb-3" controlId="exampleForm.ControlInput1" > 
         <Form.Label>Username</Form.Label>
-        <Form.Control type="email" placeholder="Username" />
+        <Form.Control type="text" placeholder="Username" />
       </Form.Group>
       <Form.Group value={password}
-        onChange={(e) => setPassword(e.target.value)}className="mb-3" controlId="exampleForm.ControlInput1"> 
+        onChange={(e) => setPassword(e.target.value)}> 
         <Form.Label>Type New Password</Form.Label>
-        <Form.Control type="email" placeholder="New Password" />
+        <Form.Control type="text" placeholder="New Password" />
       </Form.Group>
       <Form.Group value={passwordConfirmation}
         onChange={(e) => setPasswordConfirmation(e.target.value)}className="mb-3" controlId="exampleForm.ControlInput1"> 
         <Form.Label>Re-type New Password</Form.Label>
-        <Form.Control type="email" placeholder="Re-type New Password" />
+        <Form.Control type="text" placeholder="Re-type New Password" />
       </Form.Group>
+      <Button type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
 
       <Form>
       {errors.map((err) => (

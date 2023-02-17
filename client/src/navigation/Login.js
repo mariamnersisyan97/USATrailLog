@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 
 
 
-function Login({onLogin}) {
+function Login({ onLogin }) {
     const [showLogin, setShowLogin] = useState(true);
 
   return (
@@ -32,7 +32,7 @@ function Login({onLogin}) {
           <p>
             Already have an account? &nbsp;
             <Button color="secondary" onClick={() => setShowLogin(true)}>
-              Log In
+              Log In Here
             </Button>
           </p>
         </>
