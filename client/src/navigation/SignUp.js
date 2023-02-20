@@ -10,7 +10,6 @@ function SignUp({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 

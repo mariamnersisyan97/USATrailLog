@@ -1,11 +1,10 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from 'react';
-import NavBar from 'react-bootstrap/Navbar';
 import NewTrail from './navigation/NewTrail';
 import TrailList from './navigation/TrailList';
 import Login from './navigation/Login';
-
+import Navigation from './navigation/Navigation';
 
 
 function App() {
@@ -25,14 +24,14 @@ function App() {
 
   return (
     <>
-    <NavBar user={user} setUser={setUser} />
+    <Navigation user={user} setUser={setUser} />
     <main>
       <Routes>
         <Route path="/newuser">
-          <NewTrail user={user} />
+          <NewTrail user={user} setUser={setUser}/>
         </Route>
         <Route path="/">
-          <TrailList user={user}/>
+          <TrailList user={user} setUser={setUser}/>
         </Route>
       </Routes>
     </main>
