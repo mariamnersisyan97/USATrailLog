@@ -60,7 +60,7 @@ function SignUp({ onLogin }) {
 
       <Form>
       {errors.map((err) => (
-        <error key={err}>{err}</error>
+        <p key={err}>{err}</p>
       ))}
     </Form>
     </form>
