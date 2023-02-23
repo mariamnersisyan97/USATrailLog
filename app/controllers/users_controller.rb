@@ -12,6 +12,8 @@ class UsersController < ApplicationController
 
    def show 
     render json: @current_user
+    # user = User.find_by(id: session[:user_id])
+    # render json: user, status: :created
    end
 
    private

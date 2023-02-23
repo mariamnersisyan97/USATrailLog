@@ -39,9 +39,6 @@ function App() {
           <TrailList user={user} setUser={setUser}/>
         </Route> */}
       </Routes>
-
-      
-      
     </main>
   </>
   );

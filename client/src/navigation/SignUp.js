@@ -56,11 +56,11 @@ function SignUp({ onLogin }) {
         <Form.Label>Re-type New Password</Form.Label>
         <Form.Control type="text" placeholder="Re-type New Password" />
       </Form.Group>
-      <Button type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
+      <Button type="submit">{isLoading ? "Loading..." : "Sign Up Here"}</Button>
 
       <Form>
       {errors.map((err) => (
-        <p key={err}>{err}</p>
+        <h1 key={err}>{err}</h1>
       ))}
     </Form>
     </form>
