@@ -6,11 +6,12 @@ import TrailList from './navigation/TrailList';
 import Login from './navigation/Login';
 import Navigation from './navigation/Navigation';
 import About from './navigation/About';
+import { UserContext } from './context/UserContext';
+
 
 function App() {
   const [user, setUser] = useState(null);
   // const [loggedIn, setLoggedIn] = useState(false);
-  const UserContext = createContext();
 
   useEffect(() => {
     // auto-login
@@ -26,24 +27,20 @@ function App() {
 
 
   return (
-    <UserContext.Provider value={user}>
-    <Navigation  />
-    {/* user={user} setUser={setUser} */}
-
+<>   
+<UserContext.Provider value={{user, setUser}}>
+    <Navigation user={user} setUser={setUser} />
     <main>
       <Routes>
-        {/* <Route path="/new">
-          <NewTrail user={user} setUser={setUser}/>
-        </Route> */}
+      
         <Route exact path="/about" element={<About user={user} setUser={setUser}/>}/>
          <Route exact path="/new" element={<NewTrail user={user} setUser={setUser}/>} />
          <Route exact path="/trails" element={<TrailList user={user} setUser={setUser} /> } />
-        {/* <Route path="/">
-          <TrailList user={user} setUser={setUser}/>
-        </Route> */}
+       
       </Routes>
     </main>
     </UserContext.Provider>
+    </>   
   );
 }
 
