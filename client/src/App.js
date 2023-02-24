@@ -1,6 +1,6 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom";
-import { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect, createContext } from 'react';
 import NewTrail from './navigation/NewTrail';
 import TrailList from './navigation/TrailList';
 import Login from './navigation/Login';
@@ -10,6 +10,7 @@ import About from './navigation/About';
 function App() {
   const [user, setUser] = useState(null);
   // const [loggedIn, setLoggedIn] = useState(false);
+  const UserContext = createContext();
 
   useEffect(() => {
     // auto-login
@@ -25,8 +26,10 @@ function App() {
 
 
   return (
-    <>
-    <Navigation user={user} setUser={setUser} />
+    <UserContext.Provider value={user}>
+    <Navigation  />
+    {/* user={user} setUser={setUser} */}
+
     <main>
       <Routes>
         {/* <Route path="/new">
@@ -40,7 +43,7 @@ function App() {
         </Route> */}
       </Routes>
     </main>
-  </>
+    </UserContext.Provider>
   );
 }
 

@@ -1,8 +1,8 @@
 #Users
 puts "🏕 Seeding users..."
-User.create(username: "marojni", password_digest: "icecream")#1
-User.create(username: "madhiker", password_digest: "hikingforever")#2
-User.create(username: "newbootgoofin", password_digest: "reno")#3
+User.create(username: "clemi", password_digest: "tabby")#1
+User.create(username: "dudewheresmycar", password_digest: "dude")#2
+User.create(username: "hello", password_digest: "goodbye")#3
 
 
 #States

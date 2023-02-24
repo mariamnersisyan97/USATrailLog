@@ -1,22 +1,104 @@
-import React from 'react'
+import React from 'react';
+import { useState } from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import { useNavigate } from "react-router";
 
-function NewTrail() {
+
+function NewTrail({ user }) {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("");
+  const [imageurl, setImageurl] = useState("");
+  const [miles, setMiles] = useState("");
+  ///////////////////////////////////////////////////////////
+  const [errors, setErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const history = useNavigate();
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      setIsLoading(true);
+      fetch("/trails", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          description,
+          location,
+          imageurl,
+          miles,
+        }),
+      }).then((r) => {
+        setIsLoading(false);
+        if (r.ok) {
+          history.push("/");
+        } else {
+          r.json().then((err) => setErrors(err.errors));
+        }
+      });
+
+
+    }
   return (
     <>
-    <div>NewTrail</div>
-    <p>Compiled successfully!
+    <h2>Create Trail</h2>
+    <form onSubmit={handleSubmit}>
+    <Form.Group value={name}
+        onChange={(e) => setName(e.target.value)}
+        className="mb-3" controlId="exampleForm.ControlInput1" > 
+        <Form.Label>Name</Form.Label>
+        <Form.Control type="text" placeholder="Name" />
+      </Form.Group>
 
-    You can now view react-rails-api-project-template-client in the browser.
-    
-      Local:            http://localhost:4000
-      On Your Network:  http://172.25.227.48:4000
-    
-    Note that the development build is not optimized.
-    To create a production build, use npm run build.
-    
-    </p>
+      <Form.Group value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        className="mb-3" controlId="exampleForm.ControlInput1" > 
+        <Form.Label>Description</Form.Label>
+        <Form.Control type="text" placeholder="Description" />
+      </Form.Group>
+
+      <Form.Group value={location}
+        onChange={(e) => setLocation(e.target.value)}
+        className="mb-3" controlId="exampleForm.ControlInput1" > 
+        <Form.Label>Location</Form.Label>
+        <Form.Control type="text" placeholder="Location" />
+      </Form.Group>
+
+      <Form.Group value={imageurl}
+        onChange={(e) => setImageurl(e.target.value)}
+        className="mb-3" controlId="exampleForm.ControlInput1" > 
+        <Form.Label>Image URL</Form.Label>
+        <Form.Control type="text" placeholder="Image URL" />
+      </Form.Group>
+
+      <Form.Group value={miles}
+        onChange={(e) => setMiles(e.target.value)}
+        className="mb-3" controlId="exampleForm.ControlInput1" > 
+        <Form.Label>Miles</Form.Label>
+        <Form.Control type="text" placeholder="Miles" />
+      </Form.Group>
+
+      <Form>
+      {errors.map((err) => (
+        <h1 key={err}>{err}</h1>
+      ))}
+    </Form>
+    </form>
+    <div>
+      <h1>{name}</h1>
+      <p>
+        <em>{description}</em>
+        <cite>By {user.username}</cite>
+        <p>Location: {location}</p>
+        <p>Miles: {miles}</p>
+        <p>Image: {imageurl}</p>
+      </p>
+    </div>
     </>
   )
 }
 
-export default NewTrail
+export default NewTrail;
