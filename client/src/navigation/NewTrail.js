@@ -1,16 +1,16 @@
 import React from 'react';
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router";
 
 
-function NewTrail({ user }) {
+function NewTrail({ user, trail }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [imageurl, setImageurl] = useState("");
   const [miles, setMiles] = useState("");
+  const [state, setState] = useState("");
   ///////////////////////////////////////////////////////////
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,11 +30,12 @@ function NewTrail({ user }) {
           location,
           imageurl,
           miles,
+          state,
         }),
       }).then((r) => {
         setIsLoading(false);
         if (r.ok) {
-          history.push("/");
+          history.push("/trails");
         } else {
           r.json().then((err) => setErrors(err.errors));
         }
@@ -81,6 +82,13 @@ function NewTrail({ user }) {
         <Form.Control type="text" placeholder="Miles" />
       </Form.Group>
 
+      <Form.Group value={state}
+        onChange={(e) => setState(e.target.value)}
+        className="mb-3" controlId="exampleForm.ControlInput1" > 
+        <Form.Label>State</Form.Label>
+        <Form.Control type="text" placeholder="State" />
+      </Form.Group>
+
       <Form>
       {errors.map((err) => (
         <h1 key={err}>{err}</h1>
@@ -91,11 +99,13 @@ function NewTrail({ user }) {
       <h1>{name}</h1>
       <p>
         <em>{description}</em>
-        <cite>By {user.username}</cite>
+        {/* <cite>By {user.username}</cite> */}
         <p>Location: {location}</p>
         <p>Miles: {miles}</p>
-        <p>Image: {imageurl}</p>
+        <img src={imageurl}/>
+        <p>State: {state}</p>
       </p>
+      <button type="submit">{isLoading ? "Loading..." : "Submit Trail"}</button>
     </div>
     </>
   )

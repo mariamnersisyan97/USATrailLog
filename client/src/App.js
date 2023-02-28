@@ -1,20 +1,19 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom";
-import { useState, useEffect, createContext } from 'react';
+import { useState, useEffect } from 'react';
 import NewTrail from './navigation/NewTrail';
 import TrailList from './navigation/TrailList';
 import Login from './navigation/Login';
 import Navigation from './navigation/Navigation';
-import About from './navigation/About';
+import Home from './navigation/Home';
 import { UserContext } from './context/UserContext';
 
 
 function App() {
   const [user, setUser] = useState(null);
-  // const [loggedIn, setLoggedIn] = useState(false);
+  const [trails, setTrails] = useState([]);
 
   useEffect(() => {
-    // auto-login
     fetch('/me')
     .then((r) => {
       if (r.ok) {
@@ -22,6 +21,13 @@ function App() {
       }
     });
   }, []);
+  
+
+  
+  function handleDeleteTrail(id){
+    const updatedTrails = trails.filter((trail) => trail.id !==id);
+    setTrails(updatedTrails)
+  };
 
   if (!user) return <Login onLogin={setUser} />;
 
@@ -33,9 +39,10 @@ function App() {
     <main>
       <Routes>
       
-        <Route exact path="/about" element={<About user={user} setUser={setUser}/>}/>
-         <Route exact path="/new" element={<NewTrail user={user} setUser={setUser}/>} />
-         <Route exact path="/trails" element={<TrailList user={user} setUser={setUser} /> } />
+        <Route exact path="/home" element={<Home user={user} setUser={setUser}/>}/>
+         <Route exact path="/new" element={<NewTrail  trails={trails} setTrails={setTrails} user={user} setUser={setUser}/>} />
+         <Route exact path="/trails" element={<TrailList  trails={trails} setTrails={setTrails} handleDeleteTrail={handleDeleteTrail} user={user} setUser={setUser} /> } />
+     
        
       </Routes>
     </main>

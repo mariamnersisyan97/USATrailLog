@@ -1,10 +1,13 @@
 class TrailsController < ApplicationController
-    before_action :authorize
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+
+    skip_before_action :authorize, only: [:index, :show]
     def index
         render json: Trail.all
     end
     def show
-        render json: find_trail
+        trail = Trail.find(params[:id])
+        render json: trail
     end
 
     def create 
@@ -12,8 +15,16 @@ class TrailsController < ApplicationController
         render json: trail, status: :created
     end
 
-    def destroy
+    def update
+        trail = Trail.find(params[:id])
+        trail.update(trail_params)
+        render json: trail
+    end
 
+    def destroy
+        trail = Trail.find(params[:id])
+        trail.destroy
+        head :no_content
     end
 
 
@@ -25,6 +36,9 @@ class TrailsController < ApplicationController
 
     def find_trail
         Trail.find_by_id(params[:id])    
+    end
+    def render_not_found_response
+        render json: {error: "Apartment not found"}, status: :not_found
     end
 
 end

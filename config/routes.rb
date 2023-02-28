@@ -14,10 +14,10 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   ## Trail Routes 
-  resources :trails, only: [:index, :create]
+  resources :trails
 
   ## State Routes
-  resources :states, only: [:index, :create]
+  resources :states
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
