@@ -1,4 +1,7 @@
 class Trail < ApplicationRecord
-    belongs_to :users
-    belongs_to :states
+    # belongs_to :user
+    belongs_to :user, optional: true
+    belongs_to :state, optional: true
+
+
 end

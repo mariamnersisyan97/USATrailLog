@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from "react-router-dom";
 import NewTrail from './NewTrail';
 
 
@@ -31,10 +30,11 @@ function TrailList({user}) {
           <h2>{trail.name}</h2>
           <p>Description: {trail.description}</p>
           <p>Location: {trail.location}</p>
-          <img>{trail.image_url}</img>
-          <em>{trail.miles}</em>
-          <cite>By {user.username}</cite>
+          {/* <img>{trail.image_url}</img> */}
+          <em>Miles: {trail.miles}</em>
+          {/* <cite>By {user.username}</cite> */}
         </div>
+        
       ))
     ):  (
       <>

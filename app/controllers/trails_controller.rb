@@ -14,7 +14,13 @@ class TrailsController < ApplicationController
         trail = @current_user.trails.create!(trail_params)
         render json: trail, status: :created
     end
-
+    # def create
+    #     user = User.find(session[:user_id])
+    #     trail = user.trails.create!(trail_params)
+    #     render json: trail, status: :created
+    # end
+        
+        
     def update
         trail = Trail.find(params[:id])
         trail.update(trail_params)

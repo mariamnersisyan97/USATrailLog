@@ -1,20 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from "react-router";
 
 
-function NewTrail({ user, trail }) {
+function NewTrail() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
-  const [imageurl, setImageurl] = useState("");
+  const [image_url, setImage_url] = useState("");
   const [miles, setMiles] = useState("");
-  const [state, setState] = useState("");
+  // const [state_id, setState_id] = useState("");
   ///////////////////////////////////////////////////////////
+  const [states, setStates] = useState([]);
+  const [filter, setFilter] = useState(states)
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const history = useNavigate();
+
+  useEffect(() => {
+    fetch("/states")
+      .then((r) => r.json())
+      .then(setStates);
+  }, []);
+
+  function handleStateFilter(e){
+    setFilter(e.target.value);
+    console.log(e.target.value)
+  }
 
     function handleSubmit(e) {
       e.preventDefault();
@@ -28,9 +41,8 @@ function NewTrail({ user, trail }) {
           name,
           description,
           location,
-          imageurl,
+          image_url,
           miles,
-          state,
         }),
       }).then((r) => {
         setIsLoading(false);
@@ -43,6 +55,7 @@ function NewTrail({ user, trail }) {
 
 
     }
+  
   return (
     <>
     <h2>Create Trail</h2>
@@ -68,8 +81,8 @@ function NewTrail({ user, trail }) {
         <Form.Control type="text" placeholder="Location" />
       </Form.Group>
 
-      <Form.Group value={imageurl}
-        onChange={(e) => setImageurl(e.target.value)}
+      <Form.Group value={image_url}
+        onChange={(e) => setImage_url(e.target.value)}
         className="mb-3" controlId="exampleForm.ControlInput1" > 
         <Form.Label>Image URL</Form.Label>
         <Form.Control type="text" placeholder="Image URL" />
@@ -82,31 +95,28 @@ function NewTrail({ user, trail }) {
         <Form.Control type="text" placeholder="Miles" />
       </Form.Group>
 
-      <Form.Group value={state}
-        onChange={(e) => setState(e.target.value)}
+      {/* <Form.Group value={state_id}
+        onChange={(e) => setState_id(e.target.value)}
         className="mb-3" controlId="exampleForm.ControlInput1" > 
         <Form.Label>State</Form.Label>
         <Form.Control type="text" placeholder="State" />
-      </Form.Group>
+      </Form.Group> */}
 
+        <select name="state_id" onChange={handleStateFilter} value={filter}>
+          <option>Select State</option>
+          {states.map((s) => (
+            <option value={s.id} key={s.id}>{s.name}</option>
+          ))}
+        </select>
+
+      <button type="submit">{isLoading ? "Loading..." : "Submit Trail"}</button>
       <Form>
       {errors.map((err) => (
         <h1 key={err}>{err}</h1>
       ))}
     </Form>
     </form>
-    <div>
-      <h1>{name}</h1>
-      <p>
-        <em>{description}</em>
-        {/* <cite>By {user.username}</cite> */}
-        <p>Location: {location}</p>
-        <p>Miles: {miles}</p>
-        <img src={imageurl}/>
-        <p>State: {state}</p>
-      </p>
-      <button type="submit">{isLoading ? "Loading..." : "Submit Trail"}</button>
-    </div>
+    
     </>
   )
 }
