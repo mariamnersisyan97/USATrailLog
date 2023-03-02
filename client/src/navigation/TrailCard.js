@@ -28,4 +28,4 @@ function TrailCard({trail}) {
   )
 }
 
-export default TrailCard
+export default TrailCard;

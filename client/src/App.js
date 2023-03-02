@@ -39,11 +39,11 @@ function App() {
     <main>
       <Routes>
       
-        <Route exact path="/home" element={<Home user={user} setUser={setUser}/>}/>
+        {/* <Route exact path="/home" element={<Home user={user} setUser={setUser}/>}/> */}
+        <Route exact path="/" element={<Home user={user} setUser={setUser}/>}/>
          <Route exact path="/new" element={<NewTrail  trails={trails} setTrails={setTrails} user={user} setUser={setUser}/>} />
          <Route exact path="/trails" element={<TrailList  trails={trails} setTrails={setTrails} handleDeleteTrail={handleDeleteTrail} user={user} setUser={setUser} /> } />
-     
-       
+         
       </Routes>
     </main>
     </UserContext.Provider>

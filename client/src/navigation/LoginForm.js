@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+
 
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -29,41 +28,6 @@ function LoginForm({ onLogin }) {
     });
   }
   return (
-    
-  //     <form onSubmit={handleSubmit}>
-
-  //   <Form.Group> 
-  //       <Form.Label>Username</Form.Label>
-  //       {/* <Form.Control
-  //       type="username" placeholder="Username" /> */}
-  //     </Form.Group>
-  //       <input
-  //       id="username"
-  //       value={username}
-  //       onChange={(e) => setUsername(e.target.value)} type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"/>
-
-  //     <Form.Group> 
-  //       <Form.Label>Password</Form.Label>
-  //       {/* <Form.Control 
-  //       type="password" placeholder="Password" /> */}
-
-  //       <input
-  //       id="password"
-  //       value={password}
-  //       onChange={(e) => setPassword(e.target.value)} type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"/>
-  //     </Form.Group>
-  //     <Form>
-  //     <Button variant="info">
-  //       {isLoading ? "Loading..." : "Login"}
-  //       </Button>
-  //   </Form>
-  //   <Form>
-  //     {errors.map((err) => (
-  //       <h1 key={err}>{err}</h1>
-  //     ))}
-  //   </Form>
-  // </form>
-
   <form onSubmit={handleSubmit}>
 <div class="form-group">
     <label for="exampleInputEmail1">Username</label>

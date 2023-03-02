@@ -8,8 +8,16 @@ class StatesController < ApplicationController
         render json: find_state
     end
 
+    def create
+        state = State.create(params)
+        render json: state, status: created
+    end
     private
 
+    def params
+        params.permit(:name)
+    end
+    
     def find_state
         State.find_by_id(params[:id])
     end

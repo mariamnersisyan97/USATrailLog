@@ -47,7 +47,8 @@ function NewTrail() {
       }).then((r) => {
         setIsLoading(false);
         if (r.ok) {
-          history.push("/trails");
+          history("/trails");
+          console.log("added");
         } else {
           r.json().then((err) => setErrors(err.errors));
         }

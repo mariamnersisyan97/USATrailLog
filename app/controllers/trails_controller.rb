@@ -3,22 +3,18 @@ class TrailsController < ApplicationController
 
     skip_before_action :authorize, only: [:index, :show]
     def index
+        # byebug
         render json: Trail.all
     end
-    def show
-        trail = Trail.find(params[:id])
-        render json: trail
-    end
+    # def show
+    #     trail = Trail.find(params[:id])
+    #     render json: trail
+    # end
 
-    def create 
+    def create
         trail = @current_user.trails.create!(trail_params)
         render json: trail, status: :created
     end
-    # def create
-    #     user = User.find(session[:user_id])
-    #     trail = user.trails.create!(trail_params)
-    #     render json: trail, status: :created
-    # end
         
         
     def update
@@ -44,7 +40,7 @@ class TrailsController < ApplicationController
         Trail.find_by_id(params[:id])    
     end
     def render_not_found_response
-        render json: {error: "Apartment not found"}, status: :not_found
+        render json: {error: "Trail not found"}, status: :not_found
     end
 
 end
