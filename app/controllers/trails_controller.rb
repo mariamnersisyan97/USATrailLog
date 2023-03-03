@@ -6,10 +6,10 @@ class TrailsController < ApplicationController
         # byebug
         render json: Trail.all
     end
-    # def show
-    #     trail = Trail.find(params[:id])
-    #     render json: trail
-    # end
+    def show
+        trail = Trail.find(params[:id])
+        render json: trail
+    end
 
     def create
         trail = @current_user.trails.create!(trail_params)
@@ -18,13 +18,13 @@ class TrailsController < ApplicationController
         
         
     def update
-        trail = Trail.find(params[:id])
+        trail = @current_user.trails.find(params[:id])
         trail.update(trail_params)
         render json: trail
     end
 
     def destroy
-        trail = Trail.find(params[:id])
+        trail = @current_user.trails.find(params[:id])
         trail.destroy
         head :no_content
     end

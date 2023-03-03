@@ -12,6 +12,7 @@ import { UserContext } from './context/UserContext';
 function App() {
   const [user, setUser] = useState(null);
   const [trails, setTrails] = useState([]);
+  const [states, setStates] = useState([]);
 
   useEffect(() => {
     fetch('/me')
@@ -22,7 +23,14 @@ function App() {
     });
   }, []);
   
-
+  useEffect(() => {
+    fetch('/states')
+    .then((r) => {
+      if (r.ok) {
+        r.json().then((state) => setStates(state));
+      }
+    });
+  }, []);
   
   function handleDeleteTrail(id){
     const updatedTrails = trails.filter((trail) => trail.id !==id);
@@ -35,14 +43,13 @@ function App() {
   return (
 <>   
 <UserContext.Provider value={{user, setUser}}>
-    <Navigation user={user} setUser={setUser} />
+    <Navigation />
     <main>
       <Routes>
-      
-        {/* <Route exact path="/home" element={<Home user={user} setUser={setUser}/>}/> */}
-        <Route exact path="/" element={<Home user={user} setUser={setUser}/>}/>
-         <Route exact path="/new" element={<NewTrail  trails={trails} setTrails={setTrails} user={user} setUser={setUser}/>} />
-         <Route exact path="/trails" element={<TrailList  trails={trails} setTrails={setTrails} handleDeleteTrail={handleDeleteTrail} user={user} setUser={setUser} /> } />
+    
+        <Route exact path="/" element={<Home />}/>
+         <Route exact path="/new" element={<NewTrail states={states} setStates={setStates} trails={trails} setTrails={setTrails} user={user} setUser={setUser}/>} />
+         <Route exact path="/trails" element={<TrailList   trails={trails} setTrails={setTrails} handleDeleteTrail={handleDeleteTrail} /> } />
          
       </Routes>
     </main>

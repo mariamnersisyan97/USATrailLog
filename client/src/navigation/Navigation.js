@@ -1,8 +1,7 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../context/UserContext';
-import TrailList from './TrailList';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function Navigation( ) {
   const history = useNavigate();
@@ -24,11 +23,14 @@ const {user, setUser} = useContext(UserContext)
     <h1>Welcome to Trail Blazer, {user.username}!</h1>
     <div>
       <button onClick={handleLogoutClick}>Logout</button>
-      {/* <button onClick={onBtnClick}>Add New Trail</button> */}
-      {/* <Link to="/new">New Trail</Link> */}
+        <div>
+        <NavLink to="/" exact>Home</NavLink>
+        <NavLink to="/new" exact>New Trail</NavLink>
+        <NavLink to="/trails" exact>Trails</NavLink>
+        </div>
     </div>
     
-    <TrailList />
+    {/* <TrailList /> */}
    
   </>
     )

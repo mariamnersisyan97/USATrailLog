@@ -4,15 +4,14 @@ import Form from 'react-bootstrap/Form';
 import { useNavigate } from "react-router";
 
 
-function NewTrail() {
+function NewTrail({states, setStates}) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [image_url, setImage_url] = useState("");
   const [miles, setMiles] = useState("");
-  // const [state_id, setState_id] = useState("");
+  const [state_id, setState_id] = useState("");
   ///////////////////////////////////////////////////////////
-  const [states, setStates] = useState([]);
   const [filter, setFilter] = useState(states)
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -25,7 +24,7 @@ function NewTrail() {
   }, []);
 
   function handleStateFilter(e){
-    setFilter(e.target.value);
+    setState_id(e.target.value);
     console.log(e.target.value)
   }
 
@@ -43,6 +42,7 @@ function NewTrail() {
           location,
           image_url,
           miles,
+          state_id,
         }),
       }).then((r) => {
         setIsLoading(false);
@@ -106,7 +106,7 @@ function NewTrail() {
         <select name="state_id" onChange={handleStateFilter} value={filter}>
           <option>Select State</option>
           {states.map((s) => (
-            <option value={s.id} key={s.id}>{s.name}</option>
+            <option value={state_id} key={s.id}>{s.name}</option>
           ))}
         </select>
 

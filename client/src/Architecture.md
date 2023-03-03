@@ -5,3 +5,7 @@
 
 # On user login, the user can add a trail to the DB and also view the list of trails 
 # The user can also filter trails by state 
+
+
+# Add to state list once logged in
+# Add to trail list once logged in
