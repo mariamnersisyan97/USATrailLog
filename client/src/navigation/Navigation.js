@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../context/UserContext';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
 function Navigation( ) {
-  const history = useNavigate();
+  // const history = useNavigate();
 
 const {user, setUser} = useContext(UserContext)
 
@@ -14,7 +14,7 @@ const {user, setUser} = useContext(UserContext)
         setUser(null);
       }
     });
-  }
+  };
 
 
   return (
@@ -29,9 +29,7 @@ const {user, setUser} = useContext(UserContext)
         <NavLink to="/trails" exact>Trails</NavLink>
         </div>
     </div>
-    
-    {/* <TrailList /> */}
-   
+     
   </>
     )
 }

@@ -31,6 +31,17 @@ function App() {
       }
     });
   }, []);
+
+  function handleUpdateTrail(updatedTrail) {
+    const updatedTrails = trails.map((trail) => {
+      if (trail.id === updatedTrail.id){
+        return updatedTrail;
+      } else {
+        return trail;
+      }
+    });
+    setTrails(updatedTrails)
+  }
   
   function handleDeleteTrail(id){
     const updatedTrails = trails.filter((trail) => trail.id !==id);
@@ -47,9 +58,9 @@ function App() {
     <main>
       <Routes>
     
-        <Route exact path="/" element={<Home />}/>
+        <Route exact path="/" element={<Home states={states} trails={trails}/>}/>
          <Route exact path="/new" element={<NewTrail states={states} setStates={setStates} trails={trails} setTrails={setTrails} user={user} setUser={setUser}/>} />
-         <Route exact path="/trails" element={<TrailList   trails={trails} setTrails={setTrails} handleDeleteTrail={handleDeleteTrail} /> } />
+         <Route exact path="/trails" element={<TrailList   trails={trails} setTrails={setTrails} handleDeleteTrail={handleDeleteTrail} onUpdateTrail={handleUpdateTrail}/> } />
          
       </Routes>
     </main>

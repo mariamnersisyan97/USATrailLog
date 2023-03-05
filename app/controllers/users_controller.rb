@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
     skip_before_action :authorize, only: :create
+    # has_secure_password ###
+
 
     def index 
         render json: User.all
