@@ -58,10 +58,10 @@ function App() {
     <main>
       <Routes>
     
-        <Route exact path="/" element={<Home states={states} trails={trails}/>}/>
+        <Route exact path="/" element={<Home states={states} setTrails={setTrails} trails={trails} handleDeleteTrail={handleDeleteTrail} onUpdateTrail={handleUpdateTrail}/>}/>
          <Route exact path="/new" element={<NewTrail states={states} setStates={setStates} trails={trails} setTrails={setTrails} user={user} setUser={setUser}/>} />
-         <Route exact path="/trails" element={<TrailList   trails={trails} setTrails={setTrails} handleDeleteTrail={handleDeleteTrail} onUpdateTrail={handleUpdateTrail}/> } />
-         
+         {/* <Route exact path="/trails" element={<TrailList   trails={trails} setTrails={setTrails} handleDeleteTrail={handleDeleteTrail} onUpdateTrail={handleUpdateTrail}/> } />
+          */}
       </Routes>
     </main>
     </UserContext.Provider>
