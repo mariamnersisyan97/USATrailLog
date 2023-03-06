@@ -2,11 +2,11 @@ import './App.css';
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import NewTrail from './navigation/NewTrail';
-import TrailList from './navigation/TrailList';
 import Login from './navigation/Login';
 import Navigation from './navigation/Navigation';
 import Home from './navigation/Home';
 import { UserContext } from './context/UserContext';
+import TrailList from './navigation/TrailList';
 
 
 function App() {
@@ -19,6 +19,15 @@ function App() {
     .then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    fetch('/trails')
+    .then((r) => {
+      if (r.ok) {
+        r.json().then((trail) => setTrails(trail));
       }
     });
   }, []);
@@ -60,8 +69,8 @@ function App() {
     
         <Route exact path="/" element={<Home states={states} setTrails={setTrails} trails={trails} handleDeleteTrail={handleDeleteTrail} onUpdateTrail={handleUpdateTrail}/>}/>
          <Route exact path="/new" element={<NewTrail states={states} setStates={setStates} trails={trails} setTrails={setTrails} user={user} setUser={setUser}/>} />
-         {/* <Route exact path="/trails" element={<TrailList   trails={trails} setTrails={setTrails} handleDeleteTrail={handleDeleteTrail} onUpdateTrail={handleUpdateTrail}/> } />
-          */}
+         <Route exact path="/trails" element={<TrailList   trails={trails} setTrails={setTrails} handleDeleteTrail={handleDeleteTrail} onUpdateTrail={handleUpdateTrail}/> } />
+         
       </Routes>
     </main>
     </UserContext.Provider>

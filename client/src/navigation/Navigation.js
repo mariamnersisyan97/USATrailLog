@@ -4,7 +4,6 @@ import { UserContext } from '../context/UserContext';
 import { NavLink } from 'react-router-dom';
 
 function Navigation( ) {
-  // const history = useNavigate();
 
 const {user, setUser} = useContext(UserContext)
 

@@ -17,11 +17,6 @@ function NewTrail({states, setStates}) {
   const [isLoading, setIsLoading] = useState(false);
   const history = useNavigate();
 
-  useEffect(() => {
-    fetch("/states")
-      .then((r) => r.json())
-      .then(setStates);
-  }, []);
 
   function handleStateFilter(e){
     setState_id(e.target.value);

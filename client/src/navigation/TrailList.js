@@ -13,6 +13,8 @@ if (stateId)
   {displayTrails = trails.filter(t=>t.state_id === parseInt(stateId))}
 else
   {displayTrails=trails}
+  // debugger;
+
 
   
   return (
