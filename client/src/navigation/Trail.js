@@ -1,21 +1,33 @@
 import React, { useState } from 'react';
 
+
+const style = {
+    display: "inline-block",
+    boxSizing: "border-box",
+    margin: "0 10px 20px",
+    width: "500px",
+    padding: "30px",
+    color: "black",
+    fontSize: "15px",
+};
+
 function Trail({trail, onUpdateTrail}) {
+
+    
     const [isUpdating, setIsUpdating] = useState(false);
-    const {name, location, description, image_url, miles} = trail;
+    const {name, description, image_url, miles} = trail;
     const [error, setError] = useState([]);
     const defaultTrailForm = {
         name: name,
         description: description,
-        location: location,
         image_url: image_url,
         miles: miles,
     };
     const [formData, setFormData] = useState(defaultTrailForm);
 
-    function handleChange(e){
+    function handleFormChange(e){
         const key = e.target.name
-        const value = (key === "location" || key ==="image_url") ? e.target.value : parseInt(e.target.value)
+        const value = (key === "name" || key ==="image_url") ? e.target.value : parseInt(e.target.value)
         setFormData({
             ...formData,
             [key]:value,
@@ -42,35 +54,35 @@ function Trail({trail, onUpdateTrail}) {
 
   return (
     
-<div >
+<div style={style}>
             {isUpdating?
                 (<form  onSubmit={handleFormSubmit} >
                     <label>Name:</label>
-                    <input type="text" name="name" value={formData.name} onChange={handleChange}/>
+                    <input type="text" name="name" value={formData.name} onChange={handleFormChange}/>
 
                     <label>Description:</label>
-                    <input type="text" name="description" value={formData.description} onChange={handleChange}/>
+                    <input type="text" name="description" value={formData.description} onChange={handleFormChange}/>
 
-                    <label>Location:</label>
-                    <input type="text" name="location" value={formData.location} onChange={handleChange}/>
+                    
                     <label>Miles:</label>
-                    <input type="text" name="miles" value={formData.miles} onChange={handleChange}/>
+                    <input type="text" name="miles" value={formData.miles} onChange={handleFormChange}/>
                     <label>Image url:</label>
-                    <input type="text" name="image_url" value={formData.image_url} onChange={handleChange}/>
+                    <input type="text" name="image_url" value={formData.image_url} onChange={handleFormChange}/>
                     <button type="submit">Save Edits</button>
                 </form>
               ):(
                 <div>
-                    <h2>{location}</h2>
                     <p>Name: {name}</p>
-                    <p>Location {location}</p>
+                    <p>Body: {description}</p>
                     <p>Miles: {miles}</p>
-                    <img src={image_url} alt="trail" />
+                    <img src={image_url} class="img-thumbnail" alt="trail" />
                 </div>)}
 
                     :(<p>{error}</p>
                     )
                    
+
+   
         </div>
     )
 };

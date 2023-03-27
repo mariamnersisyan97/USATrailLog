@@ -3,9 +3,8 @@ class CreateTrails < ActiveRecord::Migration[6.1]
     create_table :trails do |t|
       t.string :name
       t.string :description
-      t.string :location
       t.string :image_url
-      t.integer :miles
+      t.float :miles
       t.integer :user_id
       t.integer :state_id
 
@@ -13,3 +12,4 @@ class CreateTrails < ActiveRecord::Migration[6.1]
     end
   end
 end
+ # rails g migration RenameReviewColumn --no-test-framework

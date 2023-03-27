@@ -7,12 +7,19 @@ import Navigation from './navigation/Navigation';
 import Home from './navigation/Home';
 import { UserContext } from './context/UserContext';
 import TrailList from './navigation/TrailList';
+import UserList from './navigation/UserList';
+import SignUp from './navigation/SignUp';
 
 
 function App() {
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState({
+  //   id: null,
+  //   trails: [],
+  //   reviews: [], 
+  // });
+  const [user, setUser] = useState(null)
   const [trails, setTrails] = useState([]);
-  const [states, setStates] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     fetch('/me')
@@ -33,10 +40,10 @@ function App() {
   }, []);
   
   useEffect(() => {
-    fetch('/states')
+    fetch('/reviews')
     .then((r) => {
       if (r.ok) {
-        r.json().then((state) => setStates(state));
+        r.json().then((review) => setReviews(review));
       }
     });
   }, []);
@@ -58,6 +65,12 @@ function App() {
   };
 
   if (!user) return <Login onLogin={setUser} />;
+  // if (user){
+  //    return <h2> Welcome, {user.username}</h2>;
+  // } else {
+  //   return <Login onLogin={setUser} />;
+  // }
+
 
 
   return (
@@ -67,10 +80,13 @@ function App() {
     <main>
       <Routes>
     
-        <Route exact path="/" element={<Home states={states} setTrails={setTrails} trails={trails} handleDeleteTrail={handleDeleteTrail} onUpdateTrail={handleUpdateTrail}/>}/>
-         <Route exact path="/new" element={<NewTrail states={states} setStates={setStates} trails={trails} setTrails={setTrails} user={user} setUser={setUser}/>} />
-         <Route exact path="/trails" element={<TrailList   trails={trails} setTrails={setTrails} handleDeleteTrail={handleDeleteTrail} onUpdateTrail={handleUpdateTrail}/> } />
-         
+        <Route exact path="/*" element={<Home reviews={reviews} setTrails={setTrails} trails={trails} handleDeleteTrail={handleDeleteTrail} onUpdateTrail={handleUpdateTrail}/>}/>
+         <Route exact path="/new" element={<NewTrail reviews={reviews} setReviews={setReviews} trails={trails} setTrails={setTrails} user={user} setUser={setUser}/>} />
+         <Route exact path="/trailslist" element={<TrailList trails={trails} user={user} setTrails={setTrails} handleDeleteTrail={handleDeleteTrail} onUpdateTrail={handleUpdateTrail}/> } />
+         <Route exact path="/userlist" element={<UserList user={user} trails={trails}/>}/>
+         <Route exact path="/signup" element={<SignUp />}/>
+         <Route exact path="/login" element={<Login />} />
+
       </Routes>
     </main>
     </UserContext.Provider>

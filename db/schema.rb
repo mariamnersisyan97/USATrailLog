@@ -10,25 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_07_200358) do
+ActiveRecord::Schema.define(version: 2023_03_15_203006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "states", force: :cascade do |t|
-    t.string "name"
+  create_table "reviews", force: :cascade do |t|
+    t.string "title"
+    t.string "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "trail_id"
   end
 
   create_table "trails", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "location"
     t.string "image_url"
-    t.integer "miles"
-    t.integer "user_id"
-    t.integer "state_id"
+    t.float "miles"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

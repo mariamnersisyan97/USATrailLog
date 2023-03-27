@@ -1,6 +1,12 @@
 class Trail < ApplicationRecord
-    belongs_to :user, optional: true
-    belongs_to :state, optional: true
+    # Relations
+    has_many :reviews, dependent: :destroy
+    # has_many :users, through: :reviews
 
+    # Validations
+    validates :image_url, presence: true
+    validates :description, presence: true
+    validates :miles, presence: true
+    validates :name, presence: true
 
 end

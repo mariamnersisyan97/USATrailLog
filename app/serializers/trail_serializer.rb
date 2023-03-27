@@ -1,8 +1,8 @@
 class TrailSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :location, :image_url, :miles, :state_id
+  attributes :id, :name, :description, :image_url, :miles
 
-  belongs_to :state 
-  belongs_to :user
+
+  has_many :reviews
   
 
 end

@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  
-  # resources :trails
-  # resources :users
-  # resources :states
 
   ## User Routes
   get "/users", to: "users#index"
@@ -16,8 +12,8 @@ Rails.application.routes.draw do
   ## Trail Routes 
   resources :trails
 
-  ## State Routes
-  resources :states
+  ## Reviews Routes
+  resources :reviews
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

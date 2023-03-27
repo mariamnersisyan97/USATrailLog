@@ -1,30 +1,41 @@
-import { UserContext } from '../context/UserContext';
-import { useContext } from 'react';
-import { useParams } from 'react-router-dom';
 import Trail from './Trail';
 
 
 function TrailList({trails}) {
-const {user} = useContext(UserContext)
-const {stateId} = useParams();
 
-let displayTrails
-if (stateId)
-  {displayTrails = trails.filter(t=>t.state_id === parseInt(stateId))}
-else
-  {displayTrails=trails}
-  // debugger;
+const displayAllTrails = trails.map((trail) => (
+  <Trail key={trail.id} trail={trail}/>
+));
+const handleDeleteTrail = () => {
+  console.log("deleted")
+}
 
 
+    return (
+      <div>{trails.length > 0 ? (
+        trails.map((trail)=> (
+          <div class="trail">
+            <h2 key={trail.id}>{trail.name}</h2>
+            <p>Description: {trail.description}</p>
+            {/* <img>{trail.image_url}</img> */}
+            <em>Miles: {trail.miles}</em>
+            <div>
+            <button>Edit</button>
+            <button onClick={(trail) => { handleDeleteTrail(trail.id)}}>Delete</button>
+            </div>
+          </div>
   
-  return (
-   displayTrails.length === 0 ? "No Trails posted yet. Add one at the navigation!" :
-   displayTrails.map((trail) => 
-   (<Trail 
-    trail={trail}
-    key={trail.id}
-   />))
+        ))
+      ):  (
+        <>
+        <h2> No Trails Found </h2>
+        {/* <button as={Link} to="/new">Add New Trail</button> */}
+  
+  {/* <NewTrail user={user}/> */}
+        </>
+  
+      )}</div>
   )
 }
 
-export default TrailList
+export default TrailList;
