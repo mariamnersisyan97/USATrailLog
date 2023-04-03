@@ -12,7 +12,7 @@ function Home({states, trails, setTrails, handleDeleteTrail, onUpdateTrail}) {
   //   </li>
   // ));
 
-  let match = useParams();
+  // let match = useParams();
   return (
     <>
     <h2>Get started by navigating to check your trails and create new ones for your personal record!</h2>

@@ -34,14 +34,14 @@ function LoginForm({ onLogin }) {
     <input id="username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-placeholder="Enter email"/>
+placeholder="Enter username"/>
     <small id="emailHelp" class="form-text text-muted">We'll never share your information with anyone else.</small>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
     <input id="password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)} placeholder="Password"/>
+        onChange={(e) => setPassword(e.target.value)} placeholder="Enter password"/>
   </div>
 <button type="submit" class="btn btn-primary">Login</button>
 <form>

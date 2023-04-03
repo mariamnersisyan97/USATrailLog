@@ -9,14 +9,11 @@ import { UserContext } from './context/UserContext';
 import TrailList from './navigation/TrailList';
 import UserList from './navigation/UserList';
 import SignUp from './navigation/SignUp';
+import TrailInfo from './navigation/TrailInfo';
 
 
 function App() {
-  // const [user, setUser] = useState({
-  //   id: null,
-  //   trails: [],
-  //   reviews: [], 
-  // });
+
   const [user, setUser] = useState(null)
   const [trails, setTrails] = useState([]);
   const [reviews, setReviews] = useState([]);
@@ -65,12 +62,6 @@ function App() {
   };
 
   if (!user) return <Login onLogin={setUser} />;
-  // if (user){
-  //    return <h2> Welcome, {user.username}</h2>;
-  // } else {
-  //   return <Login onLogin={setUser} />;
-  // }
-
 
 
   return (
@@ -86,6 +77,8 @@ function App() {
          <Route exact path="/userlist" element={<UserList user={user} trails={trails}/>}/>
          <Route exact path="/signup" element={<SignUp />}/>
          <Route exact path="/login" element={<Login />} />
+         <Route exact path="/trails/:id" element={<TrailInfo user={user} setUser={setUser} trails={trails}  setTrails={setTrails}  />} />
+
 
       </Routes>
     </main>

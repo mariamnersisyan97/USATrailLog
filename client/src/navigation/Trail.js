@@ -55,35 +55,36 @@ function Trail({trail, onUpdateTrail}) {
   return (
     
 <div style={style}>
-            {isUpdating?
-                (<form  onSubmit={handleFormSubmit} >
-                    <label>Name:</label>
-                    <input type="text" name="name" value={formData.name} onChange={handleFormChange}/>
+    {isUpdating?
+        (<form  onSubmit={handleFormSubmit} >
+            <label>Name:</label>
+            <input type="text" name="name" value={formData.name} onChange={handleFormChange}/>
 
-                    <label>Description:</label>
-                    <input type="text" name="description" value={formData.description} onChange={handleFormChange}/>
+            <label>Description:</label>
+            <input type="text" name="description" value={formData.description} onChange={handleFormChange}/>
 
-                    
-                    <label>Miles:</label>
-                    <input type="text" name="miles" value={formData.miles} onChange={handleFormChange}/>
-                    <label>Image url:</label>
-                    <input type="text" name="image_url" value={formData.image_url} onChange={handleFormChange}/>
-                    <button type="submit">Save Edits</button>
-                </form>
-              ):(
-                <div>
-                    <p>Name: {name}</p>
-                    <p>Body: {description}</p>
-                    <p>Miles: {miles}</p>
-                    <img src={image_url} class="img-thumbnail" alt="trail" />
-                </div>)}
+          
 
-                    :(<p>{error}</p>
-                    )
-                   
+            <label>Miles:</label>
+            <input type="text" name="miles" value={formData.miles} onChange={handleFormChange}/>
+            <label>Image url:</label>
+            <input type="text" name="image_url" value={formData.image_url} onChange={handleFormChange}/>
+            <button type="submit">Save Edits</button>
+        </form>
+        ):(
+        <div>
+            <p>Name: {name}</p>
+            <p>Body: {description}</p>
+            <p>Miles: {miles}</p>
+            <img src={image_url} class="img-thumbnail" alt="trail" />
+        </div>)}
 
-   
-        </div>
+            :(<p>{error}</p>
+            )
+            
+
+
+</div>
     )
 };
 
