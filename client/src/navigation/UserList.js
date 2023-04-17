@@ -4,7 +4,6 @@ function UserList({user, trails}) {
 
 useEffect(() => {
   console.log("Use effect for user");
-  console.log(user.trails);
   console.log(user.reviews)
 }, [user])
 

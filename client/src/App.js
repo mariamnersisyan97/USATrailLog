@@ -55,12 +55,15 @@ function App() {
     });
     setTrails(updatedTrails)
   }
+
+ const addTrail = (trail) => {
+  setTrails(current => [...current, trail])
+ };
   
   function handleDeleteTrail(id){
     const updatedTrails = trails.filter((trail) => trail.id !==id);
     setTrails(updatedTrails)
   };
-
   if (!user) return <Login onLogin={setUser} />;
 
 
@@ -72,13 +75,12 @@ function App() {
       <Routes>
     
         <Route exact path="/*" element={<Home reviews={reviews} setTrails={setTrails} trails={trails} handleDeleteTrail={handleDeleteTrail} onUpdateTrail={handleUpdateTrail}/>}/>
-         <Route exact path="/new" element={<NewTrail reviews={reviews} setReviews={setReviews} trails={trails} setTrails={setTrails} user={user} setUser={setUser}/>} />
+         <Route exact path="/new" element={<NewTrail reviews={reviews} setReviews={setReviews} trails={trails} setTrails={setTrails} user={user} setUser={setUser} addTrail={addTrail}/>} />
          <Route exact path="/trailslist" element={<TrailList trails={trails} user={user} setTrails={setTrails} handleDeleteTrail={handleDeleteTrail} onUpdateTrail={handleUpdateTrail}/> } />
          <Route exact path="/userlist" element={<UserList user={user} trails={trails}/>}/>
          <Route exact path="/signup" element={<SignUp />}/>
          <Route exact path="/login" element={<Login />} />
          <Route exact path="/trails/:id" element={<TrailInfo user={user} setUser={setUser} trails={trails}  setTrails={setTrails}  />} />
-
 
       </Routes>
     </main>

@@ -4,8 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { useNavigate, useParams } from "react-router-dom";
 
 
-function NewTrail({ setTrails, user, setUser, trails}) {
-  // const [state_id, setState_id] = useState("");
+function NewTrail({ addTrail}) {
   const params = useParams();
 
   const defaultForm = {
@@ -13,72 +12,100 @@ function NewTrail({ setTrails, user, setUser, trails}) {
     description: "",
     image_url: "",
     miles: "",
-    // initialized with string, why is it retuning NaN? 
   };
   const [formData, setFormData] = useState(defaultForm);
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const history = useNavigate();
 
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [image_url, setImage_url] = useState("");
+  const [miles, setMiles] = useState("");
 
-  const handleAddTrail = () => {
-    const newTrails = trails.map((trail) => {
-      if (parseInt(params.id)=== trail.id){
-        // const newState = [...trail.states, state]
-        // trail.states = newState
-        return trail;
-      } else {
-        return trail;
-      }
-    })
-    setTrails(newTrails)
-  }
+  // const handleAddTrail = () => {
+  //   const newTrails = trails.map((trail) => {
+  //     if (parseInt(params.id) === trail.id){
+     
+  //       return trail;
+  //     } else {
+  //       return trail;
+  //     }
+  //   })
+  //   setTrails(newTrails)
+  // }
 
-  function handleChange(e) {
-    const key = e.target.name
-    const value = (key === "name" || key === "image_url") ? e.target.value : (e.target.value)
-    setFormData({
-      ...formData,
-      [key]:value,
-      // stateid: state_id
-    })
-  }
+  // function handleChange(e) {
+  //   const key = e.target.name
+  //   const value = (key === "name" || key === "image_url") ? e.target.value : (e.target.value)
+  //   setFormData({
+  //     ...formData,
+  //     [key]:value,
+    
+  //   })
+  // }
 
     function handleSubmit(e) {
       e.preventDefault();
+
       setIsLoading(true);
-      fetch(`/trails/${params.id}`, {
+
+      fetch(`/trails/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData)
-      }).then((r) => {
+      })
+       .then((r) => {
         setIsLoading(false);
         if (r.ok) {
-          r.json().then((trail) => handleAddTrail(trail))
+          r.json().then((trail) => addTrail(trail))
           history("/userlist");
           console.log("added");
         } else {
           r.json().then((err) => setErrors(err.errors));
         }
       });
-
-
     }
   
+    // handleSubmit seems to be throwing an error
   return (
-    <div>
+    <div className='create'>
     <h2>Create Trail</h2>
-    <form className="NewItem" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
         <label>Name</label>
-        <input type="text" name="name" value={formData.name} onChange={handleChange}/>
+        <input 
+        type="text" 
+        name="name" 
+        // value={formData.name}
+        value={name}
+        onChange={(e) => setName(e.target.value)}/>
+
         <label>Description:</label>
-        <input type="text" name="description" value={formData.description} onChange={handleChange}/>
+        <input 
+        type="text" 
+        name="description" 
+        // value={formData.description} 
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}/>
+
         <label>Miles</label>
-        <input type="text" name="miles" value={formData.miles} onChange={handleChange}/>
+        <input 
+        type="text" 
+        name="miles" 
+        // value={formData.miles} 
+        value={miles}
+        onChange={(e) => setMiles(e.target.value)}/>
+
         <label>Image URL</label>
-        <textarea type="text" name="image_url" value={formData.image_url} onChange={handleChange}/>
+        <textarea
+         type="text"
+          name="image_url"
+          // value={formData.image_url}
+          value={image_url}
+          onChange={(e) => setImage_url(e.target.value)}/>
+
         <button type="submit">{isLoading ? "Loading.." : "Submit Trail"}</button>
       </form>
 

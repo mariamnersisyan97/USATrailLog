@@ -11,9 +11,11 @@
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
   },
   "dependencies": {
-    "bootstrap": "^5.2.3",
+    "@mui/material": "^5.11.15",
+    "@mui/styled-engine-sc": "^5.11.11",
     "browser-router": "^0.2.0",
-    "react-router-dom": "^6.8.1"
+    "react-router-dom": "^6.8.1",
+    "styled-components": "^5.3.9"
   },
   "version": "1.0.0",
   "main": "index.js",

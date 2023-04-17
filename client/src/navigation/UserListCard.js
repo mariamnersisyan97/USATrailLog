@@ -14,7 +14,7 @@ function UserListCard({ trail }) {
             <em>Miles: {miles}</em>
             {/* <img src={image_url}/> */}
             <div>
-           <Link to={`/trails/${id}`}> <button>See Reviews</button></Link>
+           <Link to={`/trails/${id}`}> <button>See Trail</button></Link>
             </div>
           </div>
    </div>
