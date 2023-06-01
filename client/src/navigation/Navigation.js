@@ -8,8 +8,10 @@ const style = {
   margin: "0 10px 10px",
   padding: "6px",
   color: "white",
-  background: "black",
-  fontSize: "15px"
+  background: "#AB6953",
+  fontSize: "15px",
+  textAlign: "center"
+  
 };
 
 function Navigation( ) {
@@ -26,12 +28,12 @@ const {user, setUser} = useContext(UserContext)
 
 
   return (
-    <>
-    <h1>Trail Blazer</h1>
-    <h1>Welcome to Trail Blazer, {user.username}!</h1>
+    <div>
+    <h2 className='header'>Trail Blazer</h2>
+    <h3 className='welcome'>Welcome to Trail Blazer, {user.username}!</h3>
     <div>
       <button onClick={handleLogoutClick} style={style}>Logout</button>
-        <div>
+        <div className='navigation-buttons'>
         <NavLink to="/" exact  style={style}>Home</NavLink>
         <NavLink to="/new" exact style={style}>New Trail</NavLink>
         <NavLink to="/trailslist" exact style={style}>Trails</NavLink>
@@ -39,7 +41,7 @@ const {user, setUser} = useContext(UserContext)
         </div>
     </div>
      
-  </>
+  </div>
     )
 }
 

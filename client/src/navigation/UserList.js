@@ -11,7 +11,7 @@ useEffect(() => {
     <div>
       {user.trails.length > 0 ? user.trails.map((trail) => {
         return (
-          <div key={trail.id}>
+          <div className="user-list" key={trail.id}>
             <UserListCard key={trail.id} trail={trail} />
           </div>
         )

@@ -12,12 +12,13 @@ function TrailInfo({ user, setUser, trails, setTrails }) {
 function trailAdditionals() {
     if (additionalInfo){
         return (
-            <div>
-            <div>
-                <h3>{additionalInfo['name']}</h3>
+            <div className='trail-info-card'>
+            
+                <h2>{additionalInfo['name']}</h2>
                 <p>{additionalInfo['description']}</p>
-                <img src={additionalInfo['image_url']} style={{ width: '540px', height: 'auto' }}/>
-            </div>
+                {/* <img src={additionalInfo['image_url']} style={{ width: '540px', height: 'auto' }}/> */}
+                <img src={additionalInfo['image_url']}/>
+        
             <ReviewList />
             <AddReview />
             </div>

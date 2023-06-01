@@ -109,11 +109,11 @@ function NewTrail({ addTrail}) {
         <button type="submit">{isLoading ? "Loading.." : "Submit Trail"}</button>
       </form>
 
-      <Form>
+      <form className='errors'>
       {errors.map((err) => (
         <h1 key={err}>{err}</h1>
       ))}
-    </Form>
+    </form>
     </div>
     
     

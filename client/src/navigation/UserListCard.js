@@ -8,8 +8,8 @@ function UserListCard({ trail }) {
     
   return (
    <div>
-    <div class="trail">
-            <h2>{name}</h2>
+    <div class="user-list-card">
+            <h3>{name}</h3>
             <p>Description: {description}</p>
             <em>Miles: {miles}</em>
             {/* <img src={image_url}/> */}

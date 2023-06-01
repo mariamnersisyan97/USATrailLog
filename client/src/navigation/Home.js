@@ -1,5 +1,6 @@
 import React from 'react';
-import { Route, useMatch, useParams } from 'react-router-dom';
+import { Route, Routes, useMatch, useParams } from 'react-router-dom';
+import TrailList from './TrailList';
 
 
 function Home({states, trails, setTrails, handleDeleteTrail, onUpdateTrail}) {
@@ -14,9 +15,9 @@ function Home({states, trails, setTrails, handleDeleteTrail, onUpdateTrail}) {
 
   // let match = useParams();
   return (
-    <>
-    <h2>Get started by navigating to check your trails and create new ones for your personal record!</h2>
-    <div>
+    <div className='home-trails-background'>
+    <h2 className='home'>Get started by navigating to check your trails and create new ones for your personal record!</h2>
+   
       
       {/* <Routes>
         <Route exact path={`${match}`} element=
@@ -26,9 +27,13 @@ function Home({states, trails, setTrails, handleDeleteTrail, onUpdateTrail}) {
         <Route exact path="/states/trails/:stateId" element={<TrailList trails={trails} setTrails={setTrails} handleDeleteTrail={handleDeleteTrail} onUpdateTrail={onUpdateTrail} />} />
 
       </Routes> */}
+
+      <footer> 
+        <p> by Mariam Nersisyan </p>
+      </footer>
     </div>
 
-    </>
+    
   )
 };
 

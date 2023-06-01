@@ -40,7 +40,11 @@ function SignUp({ onLogin }) {
     });
   }
   return (
+  
+    <div className='signup'>
+    
     <form onSubmit={handleSubmit}>
+    <h2>Sign-up</h2>
        <Form.Group value={username}
         onChange={(e) => setUsername(e.target.value)}
         className="mb-3" controlId="exampleForm.ControlInput1" > 
@@ -59,12 +63,14 @@ function SignUp({ onLogin }) {
       </Form.Group>
       <Button type="submit">{isLoading ? "Loading..." : "Sign Up Here"}</Button>
 
-      <Form>
+      
+    </form>
+    <form className='errors'>
       {errors.map((err) => (
         <h1 key={err}>{err}</h1>
       ))}
-    </Form>
     </form>
+    </div>
   )
 }
 

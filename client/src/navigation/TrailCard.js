@@ -6,13 +6,11 @@ function TrailCard({ trail }) {
     const {name, image_url, id} = trail;
     console.log(trail)
   return (
- <div class="card" style={{width: '18rem'}}>
+ <div class="trail-card-minimized" >
     {/* <img src={image_url}class="card-img-top" alt="..."/> */}
-    <div class="card-body">
     <h5 class="card-title">{name}</h5>
-    <Link to={`/trails/${id}`}><button>View Trail</button>
+    <Link to={`/trails/${id}`}><button type="view">View Trail</button>
     </Link>
-  </div>
     </div>)
 
 }

@@ -2,42 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .create {
   max-width: 400px;
   margin: 0 auto;
@@ -51,7 +15,7 @@
 
 .create h2 {
   font-size: 20px;
-  color: #f1356d;
+  color: #595259;
   margin-bottom: 30px;
 }
 
@@ -65,7 +29,207 @@
   display: block;
 }
 
-.create button {
+/* .create button {
   background: #f1356d;
   color: #fff;
+} */
+
+.trail-card-minimized {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  color: #AB6953;
+}
+
+.trail-card-minimized button[type="view"] {
+  /* display: block; */
+  background-color: white;
+  color: olive;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  margin-top: 10px;
+  cursor: pointer;
+  border: 1px solid;
+}
+
+
+.trail-info {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.trail-info img {
+  width: 450px;
+  height: auto;
+}
+
+.user-list {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.user-list-card-h2 {
+  color: black;
+}
+
+.user-list-card p {
+  color: brown;
+}
+
+.signup {
+  color: red;
+
+}
+
+.login-home {
+  width: 300px;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+/* Olive Green Form */
+
+form {
+  background-color: #A3AB94;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.errors {
+  background-color: white;
+  color: #595259;
+}
+
+h2 {
+  color: white;
+  text-align: center;
+}
+
+
+.header {
+  /* background-color: #676F58; */
+  background-color: #3D4C35;
+  padding: 60px;
+  text-align: center;
+  color: white;
+  margin-top: 0;
+
+}
+
+.welcome {
+  text-align: right;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  color: white;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 5px;
+  border-radius: 3px;
+  border: none;
+}
+
+button[type="submit"] {
+  display: block;
+  background-color: white;
+  color: olive;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  margin-top: 10px;
+  cursor: pointer;
+  border: 1px solid;
+  /* box-shadow: 5px 5px #676F58; */
+}
+
+button[type="signup"] {
+  display: block;
+  background-color: white;
+  color: olive;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  margin-top: 10px;
+  cursor: pointer;
+  position: relative;
+  right: -200px;
+  border: 1px solid;
+
+
+}
+
+p {
+  position: relative;
+  right: -125px;
+}
+
+.login-signup-switch-button {
+  color: black;
+  right: -750px;
+
+}
+
+.login-signup-switch-button button {
+  /* display: block; */
+  background-color: white;
+  color: olive;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  margin-top: 10px;
+  cursor: pointer;
+  border: 1px solid;
+  /* box-shadow: 5px 5px #676F58; */
+  position: relative;
+  right: -15px;
+}
+
+.home-trails-background {
+  color: black;
+  background-image: url("https://images.unsplash.com/photo-1533240332313-0db49b459ad6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aGlraW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60");
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  opacity: 0.5;
+}
+
+
+/* Trail Additional Info Card */
+.trail-info-card {
+  background-color: #AABA9F;
+  color: white;
+  width: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: auto;
+  text-align: center;
+
+}
+
+.trail-info-card img {
+  width: 100%;
+  height: auto;
+}
+
+.trail-info-card p {
+  right: 3px;
 }

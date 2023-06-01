@@ -1,4 +1,3 @@
-import Trail from './Trail';
 import TrailCard from './TrailCard';
 
 
