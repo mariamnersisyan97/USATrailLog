@@ -5,7 +5,7 @@ function TrailList({trails}) {
 
 
 return (
-  <div>
+  <div className="all-trails">
     {trails.length > 0 ? trails.map((trail) => {
       return (
         <div key={trail.id}>

@@ -30,6 +30,7 @@ function Home({states, trails, setTrails, handleDeleteTrail, onUpdateTrail}) {
 
       <footer> 
         <p> by Mariam Nersisyan </p>
+        <p>For inquiries: mariamnersisyan97@gmail.com</p>
       </footer>
     </div>
 

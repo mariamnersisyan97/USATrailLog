@@ -21,7 +21,7 @@ function Login({ onLogin }) {
           <p className='login-signup-switch-button'>
             Don't have an account?
             <button  onClick={() => setShowLogin(false)}>
-              Sign Up Here
+              Sign Up Here!
             </button>
           </p>
          
@@ -34,7 +34,7 @@ function Login({ onLogin }) {
           <p className='login-signup-switch-button'>
             Already have an account? 
             <button onClick={() => setShowLogin(true)}>
-              Log In Here
+              Log In Here!
             </button>
           </p>
         
